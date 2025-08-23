@@ -11,8 +11,7 @@
 	<groupId>com.programacion2</groupId>
 	<artifactId>microservicios-system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>microservicios-system</name>
+	<name>microservicios-system</name>
 	<description>microservicios-system</description>
 	<url/>
 	<licenses>
@@ -21,11 +20,7 @@
 	<developers>
 		<developer/>
 	</developers>
-    <modules>
-        <module>data-service</module>
-        <module>business-service</module>
-    </modules>
-    <scm>
+	<scm>
 		<connection/>
 		<developerConnection/>
 		<tag/>
@@ -34,6 +29,7 @@
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+    <packaging>pom</packaging>
     <dependencyManagement>
         <dependencies>
             <!-- Definir versiones específicas para dependencias no gestionadas por Spring Boot -->
