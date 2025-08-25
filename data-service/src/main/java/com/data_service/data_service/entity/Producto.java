@@ -1,4 +1,4 @@
-package entity;
+package com.data_service.data_service.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
