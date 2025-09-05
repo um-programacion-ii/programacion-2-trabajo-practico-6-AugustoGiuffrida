@@ -8,7 +8,7 @@ import java.util.List;
 public interface InventarioService {
     BigDecimal calculateTotalValue();
     Inventario save(Inventario inventario);
-    Inventario update(Inventario inventario, Long id);
+    Inventario update(Long id, Inventario inventario);
     void delete(Long id);
     Inventario findById(Long id);
     List<Inventario> findAll();
