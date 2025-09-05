@@ -10,7 +10,7 @@ public interface ProductoService {
     List<Producto> findProductosWithLowStock();
     List<Producto> findByCategoryName(String categoriaNombre);
     Producto save(Producto producto);
-    Producto update(Producto producto, Long id);
+    Producto update(Long id, Producto producto);
     void delete(Long id);
     Producto findById(Long id);
     List<Producto>findAll();
