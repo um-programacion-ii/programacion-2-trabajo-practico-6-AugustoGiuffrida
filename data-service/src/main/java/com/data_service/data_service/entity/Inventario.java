@@ -1,11 +1,17 @@
 package com.data_service.data_service.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "inventario")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Inventario {
 
     @Id
@@ -19,9 +25,9 @@ public class Inventario {
     private Integer stockMinimo;
 
     @Column(name = "fecha_actualizacion")
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaActualizacion;
 
-    @OneToOne(mappedBy = "inventario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "producto_id")
     private Producto producto;
 }

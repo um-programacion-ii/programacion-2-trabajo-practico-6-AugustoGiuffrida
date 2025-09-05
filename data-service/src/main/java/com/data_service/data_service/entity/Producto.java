@@ -30,7 +30,6 @@ public class Producto {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "inventario_id")
+    @OneToOne(mappedBy = "producto", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Inventario inventario;
 }
