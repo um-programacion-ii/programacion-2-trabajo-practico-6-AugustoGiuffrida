@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
-    List<Producto> findByCategoriaId(Long categoria_id);
     List<Producto> findByPrecioBetween(BigDecimal min, BigDecimal max);
 
     @Query("SELECT p FROM Producto p JOIN p.inventario i WHERE i.cantidad < i.stockMinimo")
