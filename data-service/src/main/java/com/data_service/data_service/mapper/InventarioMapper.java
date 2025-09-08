@@ -9,23 +9,28 @@ public class InventarioMapper {
         if (inventario == null) {
             return null;
         }
-        return new InventarioDTO(
-                inventario.getId(),
-                inventario.getCantidad(),
-                inventario.getStockMinimo(),
-                inventario.getFechaActualizacion()
-        );
+
+        InventarioDTO dto = new InventarioDTO();
+        dto.setId(inventario.getId());
+        dto.setCantidad(inventario.getCantidad());
+        dto.setStockMinimo(inventario.getStockMinimo());
+        dto.setFechaActualizacion(inventario.getFechaActualizacion());
+
+        return dto;
     }
 
+    // Convierte DTO a entidad
     public static Inventario toEntity(InventarioDTO dto) {
         if (dto == null) {
             return null;
         }
+
         Inventario inventario = new Inventario();
         inventario.setId(dto.getId());
         inventario.setCantidad(dto.getCantidad());
         inventario.setStockMinimo(dto.getStockMinimo());
         inventario.setFechaActualizacion(dto.getFechaActualizacion());
+
         return inventario;
     }
 }

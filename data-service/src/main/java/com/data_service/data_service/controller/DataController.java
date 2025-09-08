@@ -1,11 +1,13 @@
 package com.data_service.data_service.controller;
 
+import com.data_service.data_service.dto.CategoriaDTO;
 import com.data_service.data_service.dto.InventarioDTO;
 import com.data_service.data_service.dto.ProductoDTO;
 import com.data_service.data_service.dto.ProductoRequest;
 import com.data_service.data_service.entity.Categoria;
 import com.data_service.data_service.entity.Inventario;
 import com.data_service.data_service.entity.Producto;
+import com.data_service.data_service.mapper.CategoriaMapper;
 import com.data_service.data_service.mapper.InventarioMapper;
 import com.data_service.data_service.mapper.ProductoMapper;
 import com.data_service.data_service.service.*;
@@ -135,4 +137,36 @@ public class DataController {
     }
 
     //---Categoria---//
+    @GetMapping("/categoria")
+    public ResponseEntity<List<CategoriaDTO>> findAllCategories() {
+        List<CategoriaDTO> categorias = categoriaService.findAll()
+                .stream()
+                .map(CategoriaMapper::toDTO)
+                .toList();
+        return ResponseEntity.ok(categorias);
+    }
+
+    @GetMapping("/categoria/{id}")
+    public ResponseEntity<CategoriaDTO> findCategoryById(@PathVariable Long id) {
+        Categoria category = categoriaService.findById(id);
+        return ResponseEntity.ok(CategoriaMapper.toDTO(category));
+    }
+
+    @PostMapping("/categoria")
+    public ResponseEntity<CategoriaDTO> saveCategory(@RequestBody CategoriaDTO dto) {
+        Categoria saved = categoriaService.save(CategoriaMapper.toEntity(dto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaMapper.toDTO(saved));
+    }
+
+    @PutMapping("/categoria/{id}")
+    public ResponseEntity<CategoriaDTO> updateCategory(@PathVariable Long id, @RequestBody CategoriaDTO dto) {
+        Categoria updated = categoriaService.update(id, CategoriaMapper.toEntity(dto));
+        return ResponseEntity.ok(CategoriaMapper.toDTO(updated));
+    }
+
+    @DeleteMapping("/categoria/{id}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
+        categoriaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
