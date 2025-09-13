@@ -1,4 +1,4 @@
-package com.business_service.business_service.dto;
+package com.data_service.data_service.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,5 +16,4 @@ public class ProductoDTO {
     private BigDecimal precio;
     private String categoriaNombre;
     private Boolean stockBajo;
-    private InventarioDTO inventario;
 }
