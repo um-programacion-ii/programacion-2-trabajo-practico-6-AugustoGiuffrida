@@ -98,13 +98,6 @@ public class BusinessController {
         return ResponseEntity.ok(inventarioBusinessService.findInventoriesByProductId(productId));
     }
 
-    @PatchMapping("/inventario/{productoId}")
-    public ResponseEntity<InventarioDTO> updateInventory(
-            @PathVariable Long productId,
-            @RequestBody Integer cantidad) {
-        return ResponseEntity.ok(inventarioBusinessService.updateInventory(productId, cantidad));
-    }
-
     @GetMapping("/inventario/{productoId}/disponibilidad")
     public ResponseEntity<Map<String, Boolean>> checkAvailability(
             @PathVariable Long productId,
