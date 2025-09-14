@@ -6,6 +6,7 @@ import com.business_service.business_service.dto.ProductoDTO;
 import com.business_service.business_service.dto.InventarioDTO;
 import com.business_service.business_service.dto.ProductoRequest;
 import com.business_service.business_service.exception.ProductoNoEncontrado;
+import com.business_service.business_service.exception.ValidacionNegocioException;
 import com.business_service.business_service.service.CategoriaBusinessService;
 import com.business_service.business_service.service.InventarioBusinessService;
 import com.business_service.business_service.service.ProductoBusinessService;
@@ -116,11 +117,17 @@ public class BusinessControllerTest {
         request.setStock(5);
         request.setCategoriaId(1L);
 
+        when(productoBusinessService.saveProduct(any()))
+                .thenThrow(new ValidacionNegocioException("El precio debe ser mayor a cero"));
+
         mockMvc.perform(post("/api/productos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Error de validación de negocio"))
+                .andExpect(jsonPath("$.detalle").value("El precio debe ser mayor a cero"));
     }
+
 
     @Test
     void PUTProduct_updatesProductAndReturns200() throws Exception {

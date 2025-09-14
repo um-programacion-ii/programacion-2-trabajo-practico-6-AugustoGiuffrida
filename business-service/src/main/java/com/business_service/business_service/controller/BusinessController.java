@@ -94,8 +94,8 @@ public class BusinessController {
     }
 
     @GetMapping("/inventario/{productoId}")
-    public ResponseEntity<InventarioDTO> findInventoriesByProductId(@PathVariable Long productId) {
-        return ResponseEntity.ok(inventarioBusinessService.findInventoriesByProductId(productId));
+    public ResponseEntity<InventarioDTO> findInventoriesByProductId(@PathVariable Long productoId) {
+        return ResponseEntity.ok(inventarioBusinessService.findInventoriesByProductId(productoId));
     }
 
     @GetMapping("/inventario/{productoId}/disponibilidad")
