@@ -8,10 +8,7 @@ implementando dos microservicios independientes: uno para manejar la base de dat
 El sistema deberá utilizar diferentes profiles para trabajar con múltiples bases de datos (H2 en desarrollo, MySQL y PostgreSQL en producción).
 Explícame que es Feign Client en Microservicios.
 
-### Respuesta: 
-¡Claro! Vamos al grano, en español:
-
----
+### Respuesta:
 
 ## ¿Qué es Feign Client en microservicios?
 
