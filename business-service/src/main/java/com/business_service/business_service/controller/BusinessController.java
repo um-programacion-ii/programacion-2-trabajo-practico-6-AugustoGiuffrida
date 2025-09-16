@@ -94,15 +94,8 @@ public class BusinessController {
     }
 
     @GetMapping("/inventario/{productoId}")
-    public ResponseEntity<InventarioDTO> findInventoriesByProductId(@PathVariable Long productId) {
-        return ResponseEntity.ok(inventarioBusinessService.findInventoriesByProductId(productId));
-    }
-
-    @PatchMapping("/inventario/{productoId}")
-    public ResponseEntity<InventarioDTO> updateInventory(
-            @PathVariable Long productId,
-            @RequestBody Integer cantidad) {
-        return ResponseEntity.ok(inventarioBusinessService.updateInventory(productId, cantidad));
+    public ResponseEntity<InventarioDTO> findInventoriesByProductId(@PathVariable Long productoId) {
+        return ResponseEntity.ok(inventarioBusinessService.findInventoriesByProductId(productoId));
     }
 
     @GetMapping("/inventario/{productoId}/disponibilidad")
