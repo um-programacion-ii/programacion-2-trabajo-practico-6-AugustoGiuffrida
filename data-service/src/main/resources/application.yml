@@ -2,6 +2,9 @@ spring:
   profiles:
     active: dev
 
+# =========================
+# PERFIL DEV - H2 en memoria
+# =========================
 ---
 spring:
   config:
@@ -27,13 +30,16 @@ spring:
 server:
   port: 8080
 
+# =========================
+# PERFIL MYSQL - Docker MySQL
+# =========================
 ---
 spring:
   config:
     activate:
       on-profile: mysql
   datasource:
-    url: jdbc:mysql://localhost:3306/microservices_db?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/microservices_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: microservices_user
     password: microservices_pass
@@ -49,6 +55,9 @@ spring:
 server:
   port: 8080
 
+# =========================
+# PERFIL POSTGRES - Docker Postgres
+# =========================
 ---
 spring:
   config:

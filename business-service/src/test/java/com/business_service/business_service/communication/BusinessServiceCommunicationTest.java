@@ -1,11 +1,9 @@
 package com.business_service.business_service.communication;
 
 import com.business_service.business_service.dto.CategoriaDTO;
-import com.business_service.business_service.dto.InventarioDTO;
 import com.business_service.business_service.dto.ProductoRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
@@ -229,4 +226,3 @@ class BusinessServiceCommunicationTest {
 
 
 }
-

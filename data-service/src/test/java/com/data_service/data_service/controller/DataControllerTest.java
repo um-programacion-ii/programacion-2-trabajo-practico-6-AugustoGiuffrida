@@ -1,4 +1,4 @@
-package com.data_service.data_service.service.controller;
+package com.data_service.data_service.controller;
 
 
 import com.data_service.data_service.controller.DataController;
