@@ -143,6 +143,70 @@ Desarrollar un sistema de microservicios utilizando Spring Boot y Feign, impleme
 - Mockito 5.8.0
 - Git y GitHub
 
+
+## 🖥️ Instrucciones de Instalación
+
+### 🔁 Clonar el Repositorio
+```bash
+git clone https://github.com/um-programacion-ii/programacion-2-trabajo-practico-6-AugustoGiuffrida.git
+
+cd programacion-2-trabajo-practico-6-AugustoGiuffrida
+```
+
+### Configurar Docker
+Inicia los contenedores de MySQL y PostgreSQL ejecutando:
+
+```bash
+docker compose up -d
+```
+Esto levantará las bases de datos especificadas en el archivo `docker-compose.yml`.
+
+
+## ▶️ Ejecutar tests
+```bash
+#Perfil para H2
+mvn test -Dspring.profiles.active=dev
+
+#Perfil para mysql
+mvn test -Dspring.profiles.active=mysql
+
+#Perfil para postgres
+mvn test -Dspring.profiles.active=postgres
+```
+
+## 🌐 Endpoints REST
+
+### Productos
+| Método | Endpoint                             | Parámetros                             | Descripción                    | Respuesta                                        |
+| ------ | ------------------------------------ | -------------------------------------- | ------------------------------ | ------------------------------------------------ |
+| GET    | `/data/productos`                    | —                                      | Listar todos los productos     | `200 OK` + lista de `ProductoDTO`                |
+| GET    | `/data/productos/{id}`               | `id` (PathVariable)                    | Obtener un producto por ID     | `200 OK` + `ProductoDTO` <br> `404` si no existe |
+| POST   | `/data/productos`                    | `ProductoRequest` (RequestBody)        | Crear un producto              | `201 CREATED` + `ProductoDTO`                    |
+| PUT    | `/data/productos/{id}`               | `id` (PathVariable), `ProductoRequest` | Actualizar producto            | `200 OK` + `ProductoDTO` <br> `404` si no existe |
+| DELETE | `/data/productos/{id}`               | `id` (PathVariable)                    | Eliminar un producto           | `204 NO CONTENT` <br> `404` si no existe         |
+| GET    | `/data/productos/categoria/{nombre}` | `nombre` (PathVariable)                | Listar productos por categoría | `200 OK` + lista de `ProductoDTO`                |
+| GET    | `/data/productos/rango-precio`       | `min`, `max` (RequestParam)            | Filtrar productos por precio   | `200 OK` + lista de `ProductoDTO`                |
+
+### Categorías
+| Método | Endpoint               | Parámetros           | Descripción              | Respuesta                                         |
+| ------ | ---------------------- | -------------------- | ------------------------ | ------------------------------------------------- |
+| GET    | `/data/categoria`      | —                    | Listar categorías        | `200 OK` + lista de `CategoriaDTO`                |
+| GET    | `/data/categoria/{id}` | `id`                 | Obtener categoría por ID | `200 OK` + `CategoriaDTO` <br> `404` si no existe |
+| POST   | `/data/categoria`      | `CategoriaDTO`       | Crear categoría          | `201 CREATED` + `CategoriaDTO`                    |
+| PUT    | `/data/categoria/{id}` | `id`, `CategoriaDTO` | Actualizar categoría     | `200 OK` + `CategoriaDTO` <br> `404` si no existe |
+| DELETE | `/data/categoria/{id}` | `id`                 | Eliminar categoría       | `204 NO CONTENT` <br> `404` si no existe          |
+
+### Inventario
+| Método | Endpoint                 | Parámetros            | Descripción                     | Respuesta                                          |
+| ------ | ------------------------ | --------------------- | ------------------------------- | -------------------------------------------------- |
+| GET    | `/data/inventario`       | —                     | Listar todos los inventarios    | `200 OK` + lista de `InventarioDTO`                |
+| GET    | `/data/inventario/{id}`  | `id` (PathVariable)   | Obtener inventario por producto | `200 OK` + `InventarioDTO` <br> `404` si no existe |
+| GET    | `/data/inventario/valor` | —                     | Valor total del inventario      | `200 OK` + `BigDecimal`                            |
+| POST   | `/data/inventario`       | `InventarioDTO`       | Crear inventario                | `201 CREATED` + `InventarioDTO`                    |
+| PUT    | `/data/inventario/{id}`  | `id`, `InventarioDTO` | Actualizar inventario           | `200 OK` + `InventarioDTO` <br> `404` si no existe |
+| DELETE | `/data/inventario/{id}`  | `id`                  | Eliminar inventario             | `204 NO CONTENT` <br> `404` si no existe           |
+
+
 ## 📊 Casos de Uso del Sistema
 
 ### CU-001: Gestionar Productos
